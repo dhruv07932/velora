@@ -11,7 +11,7 @@ const ManageProducts = () => {
   const fetchProducts = async () => {
 
     const res = await fetch(
-      "http://localhost:5000/api/products"
+      "http:///api/products"
     );
 
     const data = await res.json();
@@ -40,7 +40,7 @@ const ManageProducts = () => {
 
 
     await fetch(
-      `http://localhost:5000/api/products/${id}`,
+      `http:///api/products/${id}`,
       {
         method: "DELETE",
       }

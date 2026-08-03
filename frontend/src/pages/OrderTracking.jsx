@@ -26,7 +26,7 @@ const OrderTracking = () => {
 
                 const response = await fetch(
 
-                    `http://localhost:5000/api/orders/${id}`,
+                    `https://velora-p3lg.onrender.com/api/orders/${id}`,
 
                     {
                         headers:{

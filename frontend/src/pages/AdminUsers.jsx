@@ -15,7 +15,7 @@ const AdminUsers = () => {
       const token = localStorage.getItem("token");
 
       const response = await fetch(
-        "http://localhost:5000/api/users",
+        "https://velora-p3lg.onrender.com/api/users",
         {
           headers: {
             Authorization: `Bearer ${token}`,

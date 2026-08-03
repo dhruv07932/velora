@@ -29,7 +29,7 @@ const ProductDetails = () => {
             try {
 
                 const response = await axios.get(
-                    `http://localhost:5000/api/products/${id}`
+                    `https://velora-p3lg.onrender.com/api/products/${id}`
                 );
 
                 setProduct(response.data);

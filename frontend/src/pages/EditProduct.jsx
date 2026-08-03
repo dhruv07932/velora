@@ -22,7 +22,7 @@ const EditProduct = () => {
     const fetchProduct = async () => {
 
       const res = await fetch(
-        `http://localhost:5000/api/products/${id}`
+        `https://velora-p3lg.onrender.com/api/products/${id}`
       );
 
       const data = await res.json();
@@ -54,7 +54,7 @@ const EditProduct = () => {
 
 
     await fetch(
-      `http://localhost:5000/api/products/${id}`,
+      `https://velora-p3lg.onrender.com/api/products/${id}`,
       {
         method: "PUT",
         headers:{

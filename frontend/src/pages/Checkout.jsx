@@ -144,7 +144,7 @@ const Checkout = () => {
 
             await axios.post(
 
-                "http://localhost:5000/api/orders",
+                "https://velora-p3lg.onrender.com/api/orders",
 
                 order,
 

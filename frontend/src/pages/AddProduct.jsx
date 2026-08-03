@@ -43,7 +43,7 @@ const AddProduct = () => {
 
       const response = await fetch(
 
-        "http://localhost:5000/api/products",
+       "https://velora-p3lg.onrender.com/api/products"
 
         {
 

@@ -48,7 +48,7 @@ const Admin = () => {
 
         const response = await fetch(
 
-          "http://localhost:5000/api/admin/dashboard",
+          "https://velora-p3lg.onrender.com/api/admin/dashboard",
 
           {
             headers:{

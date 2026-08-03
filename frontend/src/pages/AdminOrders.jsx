@@ -25,7 +25,7 @@ const AdminOrders = () => {
 
 
       const response = await fetch(
-        "http://localhost:5000/api/orders/all",
+        "https://velora-p3lg.onrender.com/api/orders/all",
         {
           headers:{
             Authorization:`Bearer ${token}`
@@ -60,7 +60,7 @@ const AdminOrders = () => {
 
       await fetch(
 
-        `http://localhost:5000/api/orders/${id}`,
+        `https://velora-p3lg.onrender.com/api/orders/${id}`,
 
         {
           method:"PUT",
@@ -106,7 +106,7 @@ const AdminOrders = () => {
 
       await fetch(
 
-        `http://localhost:5000/api/orders/${id}`,
+        `https://velora-p3lg.onrender.com/api/orders/${id}`,
 
         {
           method:"DELETE",

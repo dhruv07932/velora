@@ -22,7 +22,7 @@ const OrderProvider = ({ children }) => {
 
 
             const response = await axios.get(
-                "http://localhost:5000/api/orders",
+                "https://velora-p3lg.onrender.com/api/orders",
                 {
                     headers: {
                         Authorization: `Bearer ${token}`
