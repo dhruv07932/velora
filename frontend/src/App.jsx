@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HashRouter, Routes, Route } from "react-router-dom";
 
 import Layout from "./components/Layout";
 
@@ -16,7 +16,6 @@ import Account from "./pages/Account";
 import OrderTracking from "./pages/OrderTracking";
 import NotFound from "./pages/NotFound";
 
-
 import Admin from "./pages/Admin";
 import AddProduct from "./pages/AddProduct";
 import ManageProducts from "./pages/ManageProducts";
@@ -26,55 +25,36 @@ import AdminUsers from "./pages/AdminUsers";
 
 import AdminRoute from "./components/AdminRoute";
 
-
 function App() {
-
   return (
-
-    <BrowserRouter>
-
+    <HashRouter>
       <Layout>
-
         <Routes>
-
 
           {/* User Routes */}
 
           <Route path="/" element={<Home />} />
-
           <Route path="/cart" element={<Cart />} />
-
           <Route path="/checkout" element={<Checkout />} />
-
           <Route path="/success" element={<OrderSuccess />} />
-
           <Route path="/orders" element={<Orders />} />
-
 
           <Route
             path="/track-order/:id"
             element={<OrderTracking />}
           />
 
-
           <Route path="/account" element={<Account />} />
-
           <Route path="/wishlist" element={<Wishlist />} />
-
           <Route path="/login" element={<Login />} />
-
           <Route path="/signup" element={<Signup />} />
-
 
           <Route
             path="/product/:id"
             element={<ProductDetails />}
           />
 
-
-
           {/* Admin Routes */}
-
 
           <Route
             path="/admin"
@@ -85,7 +65,6 @@ function App() {
             }
           />
 
-
           <Route
             path="/admin/add-product"
             element={
@@ -94,7 +73,6 @@ function App() {
               </AdminRoute>
             }
           />
-
 
           <Route
             path="/admin/products"
@@ -105,7 +83,6 @@ function App() {
             }
           />
 
-
           <Route
             path="/admin/edit-product/:id"
             element={
@@ -114,7 +91,6 @@ function App() {
               </AdminRoute>
             }
           />
-
 
           <Route
             path="/admin/orders"
@@ -125,7 +101,6 @@ function App() {
             }
           />
 
-
           <Route
             path="/admin/users"
             element={
@@ -135,24 +110,14 @@ function App() {
             }
           />
 
-
           {/* 404 Route */}
 
-          <Route
-            path="*"
-            element={<NotFound />}
-          />
-
+          <Route path="*" element={<NotFound />} />
 
         </Routes>
-
       </Layout>
-
-    </BrowserRouter>
-
+    </HashRouter>
   );
-
 }
-
 
 export default App;
