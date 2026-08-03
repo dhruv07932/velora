@@ -26,7 +26,7 @@ const Products = ({ category = "All" }) => {
 
 
         const res = await axios.get(
-          "http://localhost:5000/api/products"
+          "https://velora-p3lg.onrender.com/api/products"
         );
 
 
