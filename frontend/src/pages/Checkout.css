@@ -1,0 +1,211 @@
+.checkout-page{
+
+    min-height:90vh;
+
+    background:#f3f4f6;
+
+    padding:40px 20px;
+
+}
+
+
+.checkout-page h1{
+
+    text-align:center;
+
+    font-size:36px;
+
+    margin-bottom:30px;
+
+    color:#111827;
+
+}
+
+
+
+.checkout-box{
+
+    max-width:800px;
+
+    margin:auto;
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:
+
+    0 10px 30px rgba(0,0,0,.12);
+
+}
+
+
+
+/* HEADINGS */
+
+.checkout-box h2{
+
+    font-size:22px;
+
+    margin:25px 0 15px;
+
+    color:#111;
+
+}
+
+
+
+/* ADDRESS */
+
+.checkout-box textarea{
+
+    width:100%;
+
+    height:120px;
+
+    padding:15px;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    resize:none;
+
+    font-size:16px;
+
+    outline:none;
+
+}
+
+
+.checkout-box textarea:focus{
+
+    border-color:#ff9900;
+
+}
+
+
+
+/* PAYMENT */
+
+.checkout-box label{
+
+    display:block;
+
+    padding:15px;
+
+    margin:10px 0;
+
+    border:1px solid #ddd;
+
+    border-radius:12px;
+
+    cursor:pointer;
+
+    transition:.3s;
+
+}
+
+
+
+.checkout-box label:hover{
+
+    background:#fff7ed;
+
+    border-color:#ff9900;
+
+}
+
+
+
+.checkout-box input{
+
+    margin-right:10px;
+
+}
+
+
+
+/* ORDER ITEMS */
+
+.checkout-box p{
+
+    background:#f8fafc;
+
+    padding:12px;
+
+    border-radius:10px;
+
+    margin:8px 0;
+
+}
+
+
+
+/* TOTAL */
+
+.checkout-box h2:last-of-type{
+
+    color:#b12704;
+
+    font-size:28px;
+
+}
+
+
+
+/* BUTTON */
+
+.place-order{
+
+    width:100%;
+
+    padding:16px;
+
+    margin-top:25px;
+
+    border:none;
+
+    border-radius:30px;
+
+    background:#ffd814;
+
+    font-size:18px;
+
+    font-weight:800;
+
+    cursor:pointer;
+
+}
+
+
+
+.place-order:hover{
+
+    background:#f7ca00;
+
+}
+
+
+
+/* MOBILE */
+
+@media(max-width:600px){
+
+
+    .checkout-box{
+
+        padding:20px;
+
+    }
+
+
+    .checkout-page h1{
+
+        font-size:28px;
+
+    }
+
+}

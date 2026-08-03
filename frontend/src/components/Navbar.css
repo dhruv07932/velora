@@ -1,0 +1,224 @@
+.navbar{
+
+    height:75px;
+
+    background:#111827;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:space-between;
+
+    padding:0 40px;
+
+    color:white;
+
+    gap:25px;
+
+}
+
+
+
+/* Logo */
+
+.logo{
+
+    font-size:28px;
+
+    font-weight:800;
+
+    color:#ffb703;
+
+    cursor:pointer;
+
+    white-space:nowrap;
+
+}
+
+
+
+/* Search */
+
+.search-box{
+
+    flex:1;
+
+    max-width:650px;
+
+    height:42px;
+
+    display:flex;
+
+}
+
+
+
+.search-box select{
+
+    width:70px;
+
+    border:none;
+
+    background:#e5e7eb;
+
+    padding:5px;
+
+}
+
+
+
+.search-box input{
+
+    flex:1;
+
+    border:none;
+
+    padding:0 15px;
+
+    font-size:15px;
+
+    outline:none;
+
+}
+
+
+
+.search-box button{
+
+    width:55px;
+
+    border:none;
+
+    background:#ffb703;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
+
+
+/* Right menu */
+
+
+.nav-links{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:25px;
+
+}
+
+
+
+.account,
+.orders{
+
+    display:flex;
+
+    flex-direction:column;
+
+    font-size:13px;
+
+}
+
+
+
+.account b,
+.orders b{
+
+    font-size:15px;
+
+}
+
+
+
+.cart{
+
+    font-size:22px;
+
+    display:flex;
+
+    gap:5px;
+
+    align-items:center;
+
+    cursor:pointer;
+
+}
+
+
+
+.cart span{
+
+    font-size:16px;
+
+}
+
+
+
+/* Mobile */
+
+@media(max-width:900px){
+
+
+.navbar{
+
+    flex-wrap:wrap;
+
+    height:auto;
+
+    padding:20px;
+
+}
+
+
+.search-box{
+
+    order:3;
+
+    width:100%;
+
+}
+
+
+
+.nav-links{
+
+    gap:15px;
+
+}
+
+
+
+}@media(max-width:700px){
+
+    .navbar{
+
+        flex-direction:column;
+        gap:15px;
+        padding:15px;
+
+    }
+
+
+    .search-box{
+
+        width:100%;
+
+    }
+
+
+    .nav-links{
+
+        width:100%;
+        justify-content:center;
+        flex-wrap:wrap;
+
+    }
+
+}

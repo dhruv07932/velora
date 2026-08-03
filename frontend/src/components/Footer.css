@@ -1,0 +1,35 @@
+.footer {
+  background: #131921;
+  color: white;
+  padding: 40px 20px;
+  margin-top: 50px;
+  text-align: center;
+}
+
+.footer h2 {
+  margin-bottom: 10px;
+}
+
+.footer p {
+  color: #ccc;
+}
+
+.footer-links {
+  margin: 20px 0;
+}
+
+.footer-links a {
+  color: white;
+  text-decoration: none;
+  margin: 0 15px;
+  transition: 0.3s;
+}
+
+.footer-links a:hover {
+  color: orange;
+}
+
+.copyright {
+  margin-top: 20px;
+  font-size: 14px;
+}

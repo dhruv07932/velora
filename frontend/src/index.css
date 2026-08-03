@@ -1,0 +1,182 @@
+:root {
+
+    --primary:#131921;
+    --secondary:#232f3e;
+    --orange:#ff9900;
+    --light:#f3f3f3;
+    --text:#111827;
+
+    font-family:
+    Arial,
+    Helvetica,
+    sans-serif;
+
+    color:#111;
+
+    background:#f5f5f5;
+
+}
+
+
+
+* {
+
+    margin:0;
+
+    padding:0;
+
+    box-sizing:border-box;
+
+}
+
+
+
+html,
+body,
+#root {
+
+    width:100%;
+
+    min-height:100vh;
+
+}
+
+
+
+body {
+
+    background:#f5f5f5;
+
+}
+
+
+
+#root {
+
+    width:100%;
+
+    display:flex;
+
+    flex-direction:column;
+
+}
+
+
+
+a {
+
+    text-decoration:none;
+
+    color:inherit;
+
+}
+
+
+
+button {
+
+    cursor:pointer;
+
+    font-family:inherit;
+
+}
+
+
+
+img {
+
+    max-width:100%;
+
+    display:block;
+
+}
+
+
+
+/* Main container */
+
+.container {
+
+    width:100%;
+
+    padding:0 40px;
+
+}
+
+
+
+h1,
+h2,
+h3 {
+
+    color:#111;
+
+}
+
+
+
+h1 {
+
+    font-size:42px;
+
+    font-weight:700;
+
+}
+
+
+
+h2 {
+
+    font-size:30px;
+
+    font-weight:700;
+
+}
+
+
+
+::-webkit-scrollbar {
+
+    width:8px;
+
+}
+
+
+
+::-webkit-scrollbar-thumb {
+
+    background:#888;
+
+    border-radius:20px;
+
+}
+
+
+
+/* Mobile responsive */
+
+@media(max-width:768px){
+
+
+    .container {
+
+        padding:0 15px;
+
+    }
+
+
+    h1 {
+
+        font-size:30px;
+
+    }
+
+
+    h2 {
+
+        font-size:24px;
+
+    }
+
+
+}

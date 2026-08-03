@@ -1,0 +1,309 @@
+.admin-page{
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        135deg,
+        #f8fafc,
+        #eef2ff
+    );
+
+    padding:40px;
+
+}
+
+
+
+/* Header */
+
+.admin-title{
+
+    font-size:36px;
+
+    font-weight:800;
+
+    color:#111827;
+
+    margin-bottom:10px;
+
+}
+
+
+.admin-subtitle{
+
+    color:#64748b;
+
+    font-size:17px;
+
+    margin-bottom:35px;
+
+}
+
+
+
+
+
+/* Stats Cards */
+
+
+.admin-cards{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+
+    margin-bottom:40px;
+
+}
+
+
+
+.admin-card{
+
+    background:white;
+
+    padding:28px;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+    transition:.35s;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+
+
+.admin-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:100px;
+
+    height:100px;
+
+    background:#6366f1;
+
+    opacity:.12;
+
+    border-radius:50%;
+
+    right:-30px;
+
+    top:-30px;
+
+}
+
+
+
+.admin-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:
+    0 20px 45px rgba(0,0,0,.15);
+
+}
+
+
+
+.admin-card h2{
+
+    font-size:38px;
+
+    color:#4f46e5;
+
+    margin:0;
+
+}
+
+
+
+.admin-card p{
+
+    margin-top:12px;
+
+    color:#64748b;
+
+    font-size:17px;
+
+    font-weight:600;
+
+}
+
+
+
+
+
+/* Charts */
+
+
+.charts-container{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(400px,1fr));
+
+    gap:30px;
+
+    margin-bottom:45px;
+
+}
+
+
+
+.chart-box{
+
+    background:white;
+
+    padding:30px;
+
+    border-radius:22px;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+}
+
+
+
+.chart-box h2{
+
+    font-size:22px;
+
+    color:#111827;
+
+    margin-bottom:20px;
+
+}
+
+
+
+
+
+/* Action Boxes */
+
+
+.admin-actions{
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(250px,1fr));
+
+    gap:25px;
+
+}
+
+
+
+.action-box{
+
+    background:white;
+
+    border-radius:22px;
+
+    padding:32px;
+
+    text-align:center;
+
+    cursor:pointer;
+
+    transition:.35s;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.08);
+
+}
+
+
+
+.action-box:hover{
+
+    transform:translateY(-10px);
+
+    background:#4f46e5;
+
+    color:white;
+
+}
+
+
+
+.action-box h3{
+
+    font-size:24px;
+
+    margin-bottom:12px;
+
+}
+
+
+
+.action-box p{
+
+    color:#64748b;
+
+}
+
+
+
+.action-box:hover p{
+
+    color:white;
+
+}
+
+
+
+
+
+/* Mobile */
+
+
+@media(max-width:700px){
+
+
+    .admin-page{
+
+        padding:20px;
+
+    }
+
+
+
+    .admin-title{
+
+        font-size:28px;
+
+    }
+
+
+
+    .charts-container{
+
+        grid-template-columns:1fr;
+
+    }
+
+
+
+    .chart-box{
+
+        padding:20px;
+
+    }
+
+
+}
