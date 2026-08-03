@@ -1,68 +1,55 @@
 import React from "react";
 import "./Categories.css";
 
-
 const categories = [
-
     {
         id:1,
         name:"Mobiles",
-        image:"/src/assets/products/iphone.jpg"
+        image:"/products/iphone.jpg"
     },
-
     {
         id:2,
         name:"Laptops",
-        image:"/src/assets/products/laptop.jpg"
+        image:"/products/laptop.jpg"
     },
-
     {
         id:3,
         name:"Puja",
-        image:"/src/assets/products/mohan-bhog-ghee.jpg"
+        image:"/products/mohan-bhog-ghee.jpg"
     },
-
     {
         id:4,
         name:"Fashion",
-        image:"/src/assets/products/shoes.jpg"
+        image:"/products/shoes.jpg"
     },
-
     {
         id:5,
         name:"Gaming",
-        image:"/src/assets/products/keyboard.jpg"
+        image:"/products/keyboard.jpg"
     },
-
     {
         id:6,
         name:"Cameras",
-        image:"/src/assets/products/camera.jpg"
+        image:"/products/camera.jpg"
     },
-
     {
         id:7,
         name:"Accessories",
-        image:"/src/assets/products/headphone.jpg"
+        image:"/products/headphone.jpg"
     },
-
     {
         id:8,
         name:"Watches",
-        image:"/src/assets/products/watch.jpg"
+        image:"/products/watch.jpg"
     }
-
 ];
-
 
 
 const Categories = ({setCategory}) => {
 
-
     return (
 
         <section className="category-section">
-
 
             <div className="category-title">
 
@@ -77,9 +64,7 @@ const Categories = ({setCategory}) => {
             </div>
 
 
-
             <div className="category-grid">
-
 
 
                 <div
@@ -95,7 +80,6 @@ const Categories = ({setCategory}) => {
                         All Products
                     </h3>
 
-
                     <button>
                         Explore
                     </button>
@@ -104,18 +88,14 @@ const Categories = ({setCategory}) => {
 
 
 
-
-
                 {
                     categories.map((category)=>(
-
 
                         <div
                             className="category-card"
                             key={category.id}
                             onClick={()=>setCategory(category.name)}
                         >
-
 
                             <img
                                 src={category.image}
@@ -125,36 +105,28 @@ const Categories = ({setCategory}) => {
 
                             <div className="category-info">
 
-
                                 <h3>
                                     {category.name}
                                 </h3>
-
 
                                 <button>
                                     Explore →
                                 </button>
 
-
                             </div>
 
-
                         </div>
-
 
                     ))
                 }
 
 
-
             </div>
-
 
         </section>
 
     );
 
 };
-
 
 export default Categories;

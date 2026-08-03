@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+const API = "https://velora-p3lg.onrender.com/api/products";
+
 const ManageProducts = () => {
 
   const [products, setProducts] = useState([]);
@@ -10,13 +12,20 @@ const ManageProducts = () => {
 
   const fetchProducts = async () => {
 
-    const res = await fetch(
-      "http:///api/products"
-    );
+    try {
 
-    const data = await res.json();
+      const res = await fetch(API);
 
-    setProducts(data);
+      const data = await res.json();
+
+      setProducts(data);
+
+    } 
+    catch(error) {
+
+      console.log(error);
+
+    }
 
   };
 
@@ -39,18 +48,26 @@ const ManageProducts = () => {
     if (!confirmDelete) return;
 
 
-    await fetch(
-      `http:///api/products/${id}`,
-      {
-        method: "DELETE",
-      }
-    );
+    try {
+
+      await fetch(
+        `${API}/${id}`,
+        {
+          method:"DELETE",
+        }
+      );
 
 
-    alert("Product Deleted");
+      alert("Product Deleted");
 
+      fetchProducts();
 
-    fetchProducts();
+    }
+    catch(error){
+
+      console.log(error);
+
+    }
 
   };
 
@@ -64,43 +81,54 @@ const ManageProducts = () => {
 
 
       {
-        products.map((product) => (
+        products.length > 0 ? (
 
-          <div key={product._id}>
+          products.map((product)=>(
 
-
-            <h3>
-              {product.name}
-            </h3>
+            <div key={product._id}>
 
 
-            <p>
-              ₹{product.price}
-            </p>
+              <h3>
+                {product.name}
+              </h3>
+
+
+              <p>
+                ₹{product.price}
+              </p>
+
+
+              <button
+                onClick={() =>
+                  navigate(`/admin/edit-product/${product._id}`)
+                }
+              >
+                ✏️ Edit
+              </button>
 
 
 
-            <button
-              onClick={() => navigate(`/admin/edit-product/${product._id}`)}
-            >
-              ✏️ Edit
-            </button>
+              <button
+                onClick={() =>
+                  deleteProduct(product._id)
+                }
+              >
+                🗑 Delete
+              </button>
 
 
-
-            <button
-              onClick={() => deleteProduct(product._id)}
-            >
-              🗑 Delete
-            </button>
+              <hr />
 
 
-            <hr />
+            </div>
 
+          ))
 
-          </div>
+        ) : (
 
-        ))
+          <h2>No Products Found</h2>
+
+        )
       }
 
 
