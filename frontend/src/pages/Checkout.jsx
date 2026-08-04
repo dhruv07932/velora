@@ -10,429 +10,277 @@ import "./Checkout.css";
 
 const Checkout = () => {
 
+  const { cart, setCart } = useContext(CartContext);
 
-    const { cart, setCart } = useContext(CartContext);
+  const { addOrder } = useContext(OrderContext);
 
-    const { addOrder } = useContext(OrderContext);
+  const navigate = useNavigate();
 
 
-    const navigate = useNavigate();
+  const [address, setAddress] = useState({
+    name:"",
+    phone:"",
+    city:"",
+    pincode:"",
+    fullAddress:""
+  });
 
 
+  const [payment,setPayment] = useState("");
 
-    const [address, setAddress] = useState({
 
-        name:"",
-        phone:"",
-        city:"",
-        pincode:"",
-        fullAddress:""
+  const total = cart.reduce(
+    (sum,item)=> sum + item.price * item.quantity,
+    0
+  );
 
-    });
 
+  const placeOrder = async()=>{
 
 
-    const [payment,setPayment] = useState("");
+    if(cart.length===0){
+      alert("Your cart is empty");
+      return;
+    }
 
 
+    if(
+      !address.name ||
+      !address.phone ||
+      !address.city ||
+      !address.pincode ||
+      !address.fullAddress
+    ){
+      alert("Please fill delivery address");
+      return;
+    }
 
-    const total = cart.reduce(
 
-        (sum,item)=>
+    if(payment===""){
+      alert("Please select payment method");
+      return;
+    }
 
-        sum + item.price * item.quantity,
 
-        0
+    const order = {
 
-    );
+      products: cart.map(item=>({
 
+        productId:item._id,
+        name:item.name,
+        price:item.price,
+        quantity:item.quantity,
+        image:item.image
 
+      })),
 
+      total,
 
-    const placeOrder = async()=>{
+      address,
 
+      payment,
 
-        if(cart.length===0){
+      deliveryDate:new Date(
+        Date.now()+5*24*60*60*1000
+      ),
 
-            alert("Your cart is empty");
-
-            return;
-
-        }
-
-
-
-        if(
-            !address.name ||
-            !address.phone ||
-            !address.city ||
-            !address.pincode ||
-            !address.fullAddress
-        ){
-
-            alert("Please fill delivery address");
-
-            return;
-
-        }
-
-
-
-        if(payment===""){
-
-            alert("Please select payment method");
-
-            return;
-
-        }
-
-
-
-        const order = {
-
-
-            products:cart.map(item=>(
-
-                {
-
-                    productId:item._id,
-
-                    name:item.name,
-
-                    price:item.price,
-
-                    quantity:item.quantity,
-
-                    image:item.image
-
-                }
-
-            )),
-
-
-            total:total,
-
-
-            address:address,
-
-
-            payment:payment,
-
-
-            deliveryDate:new Date(
-
-                Date.now()+5*24*60*60*1000
-
-            ),
-
-
-            status:"Order Placed"
-
-
-        };
-
-
-
-
-
-        try{
-
-
-            const token = localStorage.getItem("token");
-
-
-
-            await axios.post(
-
-                "https://velora-p3lg.onrender.com/api/orders",
-
-                order,
-
-                {
-
-                    headers:{
-
-                        Authorization:`Bearer ${token}`
-
-                    }
-
-                }
-
-            );
-
-
-
-            addOrder(order);
-
-
-
-            setCart([]);
-
-
-
-            navigate("/success");
-
-
-        }
-
-        catch(error){
-
-            console.log(error);
-
-            alert("Order failed");
-
-        }
-
+      status:"Order Placed"
 
     };
 
 
+    try {
 
 
+      const token = localStorage.getItem("token");
 
-    return (
 
-        <div className="checkout-page">
+      if(!token){
 
+        alert("Please login again");
 
-            <h1>
-                🛍️ Checkout
-            </h1>
+        navigate("/login");
 
+        return;
 
+      }
 
-            <div className="checkout-box">
 
+      const response = await axios.post(
 
-                <h2>
-                    📍 Delivery Address
-                </h2>
+        "https://velora-p3lg.onrender.com/api/orders",
 
+        order,
 
+        {
+          headers:{
+            Authorization:`Bearer ${token}`
+          }
+        }
 
-                <input
+      );
 
-                placeholder="Full Name"
 
-                value={address.name}
+      const savedOrder = response.data.order || response.data;
 
-                onChange={(e)=>
 
-                    setAddress({
+      addOrder(savedOrder);
 
-                        ...address,
 
-                        name:e.target.value
+      setCart([]);
 
-                    })
 
-                }
+      navigate("/success",{
 
-                />
+        state:{
+          order:savedOrder
+        }
 
+      });
 
 
-                <input
+    } catch(error){
 
-                placeholder="Phone Number"
 
-                value={address.phone}
+      console.log(
+        "ORDER ERROR:",
+        error.response?.data || error.message
+      );
 
-                onChange={(e)=>
 
-                    setAddress({
+      alert("Order failed");
 
-                        ...address,
 
-                        phone:e.target.value
+    }
 
-                    })
 
-                }
+  };
 
-                />
 
 
+  return (
 
-                <input
+    <div className="checkout-page">
 
-                placeholder="City"
+      <h1>🛍️ Checkout</h1>
 
-                value={address.city}
 
-                onChange={(e)=>
+      <div className="checkout-box">
 
-                    setAddress({
 
-                        ...address,
+        <h2>📍 Delivery Address</h2>
 
-                        city:e.target.value
 
-                    })
+        <input
+          placeholder="Full Name"
+          value={address.name}
+          onChange={(e)=>setAddress({...address,name:e.target.value})}
+        />
 
-                }
 
-                />
+        <input
+          placeholder="Phone Number"
+          value={address.phone}
+          onChange={(e)=>setAddress({...address,phone:e.target.value})}
+        />
 
 
+        <input
+          placeholder="City"
+          value={address.city}
+          onChange={(e)=>setAddress({...address,city:e.target.value})}
+        />
 
-                <input
 
-                placeholder="Pincode"
+        <input
+          placeholder="Pincode"
+          value={address.pincode}
+          onChange={(e)=>setAddress({...address,pincode:e.target.value})}
+        />
 
-                value={address.pincode}
 
-                onChange={(e)=>
+        <textarea
+          placeholder="Full Address"
+          value={address.fullAddress}
+          onChange={(e)=>setAddress({...address,fullAddress:e.target.value})}
+        />
 
-                    setAddress({
 
-                        ...address,
 
-                        pincode:e.target.value
+        <h2>💳 Payment Method</h2>
 
-                    })
 
-                }
+        <label>
 
-                />
+          <input
+            type="radio"
+            name="payment"
+            value="COD"
+            onChange={(e)=>setPayment(e.target.value)}
+          />
 
+          Cash on Delivery
 
+        </label>
 
 
-                <textarea
+        <br/>
 
-                placeholder="Full Address"
 
-                value={address.fullAddress}
+        <label>
 
-                onChange={(e)=>
+          <input
+            type="radio"
+            name="payment"
+            value="UPI"
+            onChange={(e)=>setPayment(e.target.value)}
+          />
 
-                    setAddress({
+          UPI Payment
 
-                        ...address,
+        </label>
 
-                        fullAddress:e.target.value
 
-                    })
 
-                }
+        <h2>🛒 Order Summary</h2>
 
-                />
 
+        {
+          cart.map(item=>(
 
+            <p key={item._id}>
 
+              {item.name} × {item.quantity}
+              {" = "}
+              ₹{item.price * item.quantity}
 
+            </p>
 
+          ))
+        }
 
-                <h2>
-                    💳 Payment Method
-                </h2>
 
+        <h2>
+          Total: ₹{total}
+        </h2>
 
 
-                <label>
 
-                <input
+        <button
+          className="place-order"
+          onClick={placeOrder}
+        >
 
-                type="radio"
+          Place Order
 
-                name="payment"
+        </button>
 
-                value="COD"
 
-                onChange={(e)=>setPayment(e.target.value)}
+      </div>
 
-                />
+    </div>
 
-                Cash on Delivery
-
-                </label>
-
-
-
-                <br/>
-
-
-
-                <label>
-
-                <input
-
-                type="radio"
-
-                name="payment"
-
-                value="UPI"
-
-                onChange={(e)=>setPayment(e.target.value)}
-
-                />
-
-                UPI Payment
-
-                </label>
-
-
-
-
-
-
-                <h2>
-                    🛒 Order Summary
-                </h2>
-
-
-
-
-                {
-                    cart.map(item=>(
-
-                        <p key={item._id}>
-
-                            {item.name} × {item.quantity}
-
-                            {" = "}
-
-                            ₹{item.price*item.quantity}
-
-                        </p>
-
-                    ))
-                }
-
-
-
-
-
-                <h2>
-                    Total: ₹{total}
-                </h2>
-
-
-
-
-
-                <button
-
-                className="place-order"
-
-                onClick={placeOrder}
-
-                >
-
-                    Place Order
-
-                </button>
-
-
-
-
-            </div>
-
-
-        </div>
-
-    );
+  );
 
 };
 

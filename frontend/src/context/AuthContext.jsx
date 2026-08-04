@@ -18,6 +18,14 @@ const AuthProvider = ({ children }) => {
       JSON.stringify(userData)
     );
 
+    // Save JWT token for orders/authentication
+    if (userData.token) {
+      localStorage.setItem(
+        "token",
+        userData.token
+      );
+    }
+
   };
 
 
@@ -26,7 +34,6 @@ const AuthProvider = ({ children }) => {
     setUser(null);
 
     localStorage.removeItem("loggedUser");
-
     localStorage.removeItem("token");
 
   };
